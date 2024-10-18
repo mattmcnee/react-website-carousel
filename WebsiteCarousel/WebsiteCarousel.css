@@ -1,35 +1,37 @@
+/* --dynamic-height is defined in Carousel.jsx */
+
 .carousel-container {
     margin: 20px auto;
     max-width: 850px;
     position: relative;
-  }
+}
   
-  .carousel-item {
+.carousel-item {
     transition: all 0.3s ease;
-  }
+}
 
-  .slick-slide{
+.slick-slide{
     height: var(--dynamic-height, 200);
-  }
+}
   
-  .slick-slide .carousel-item {
+.slick-slide .carousel-item {
     z-index: 1;
     position: relative;
     transform: scale(0.8) translateY(calc(var(--dynamic-height, 200) / 3));
-  }
+}
   
-  .slick-slide .carousel-item.active {
+.slick-slide .carousel-item.active {
     z-index: 5;
     transform: scale(2)  translateY(4px);
-  }
+}
   
-  .slick-slide .iframe-container{
+.slick-slide .iframe-container{
     width: 100%;
     height: fit-content;
     height: 10px;
-  }
+}
   
-  .slick-slide .overlay{
+.slick-slide .overlay{
     height: calc(var(--dynamic-height, 200) / 2);
     cursor: pointer;
     position: absolute;
@@ -39,9 +41,9 @@
     bottom: 0;
     opacity: 0;
     z-index: 10;
-  }
+}
   
-  .slick-slide .link-overlay {
+.slick-slide .link-overlay {
     --link-overlay-height: 14px;
     --link-overlay-margin: 2px;
     cursor: pointer;
@@ -49,6 +51,7 @@
     top: 0;
     left: 0;
     height: var(--link-overlay-height);
+    /* messy due to transforms but positions exactly bottom left of the parent */
     margin-top: calc(var(--dynamic-height, 200) / 2 - (10px + var(--link-overlay-height) + var(--link-overlay-margin)));
     margin-left: 2px;
     background-color: #fafafa;
@@ -59,8 +62,8 @@
     flex-direction: row;
     align-items: center;
     white-space: nowrap;
-
-
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
 }
 
 .slick-slide .link-overlay:hover{

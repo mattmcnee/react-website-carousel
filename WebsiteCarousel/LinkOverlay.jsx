@@ -7,16 +7,18 @@ const LinkOverlay = ({ linkText, src }) => {
     const textRef = useRef(null);
     const [expandedWidth, setExpandedWidth] = useState(0);
 
+    // calculate width of text to expand to
     useEffect(() => {
         if (containerRef.current && textRef.current) {
             const iconWidth = 14;
             const textWidth = textRef.current.offsetWidth;
-            setExpandedWidth(iconWidth + textWidth); // 10px for padding
+            setExpandedWidth(iconWidth + textWidth);
         }
     }, [linkText]);
 
+    // open external links in new tab
     const handleClick = () => {
-        window.open(src, '_blank'); // Open the external link in a new tab
+        window.open(src, '_blank');
     };
 
     return (
@@ -24,13 +26,10 @@ const LinkOverlay = ({ linkText, src }) => {
             className='link-overlay'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={handleClick} // Add onClick handler
+            onClick={handleClick}
             ref={containerRef}
             style={{
                 width: isHovered ? `${expandedWidth}px` : 'var(--link-overlay-height)',
-                transition: 'all 0.3s ease-in-out',
-                overflow: 'hidden',
-                cursor: 'pointer' // Change cursor to pointer
             }}
         >
             <div

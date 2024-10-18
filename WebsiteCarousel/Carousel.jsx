@@ -56,7 +56,6 @@ const Carousel = ({sources = defaultSources}) => {
         slidesToScroll: 1,
         beforeChange: handleBeforeChange,
         arrows: false,
-        // infinite: false
     };
 
     return (
@@ -70,6 +69,7 @@ const Carousel = ({sources = defaultSources}) => {
                                     src={source.url}
                                     zoom={0.3}
                                     setCssHeight={setCssHeight}
+                                    title={source.name}
                                 />
                                 {index !== activeIndex && (
                                     <div
