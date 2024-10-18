@@ -2,7 +2,7 @@
 
 Displays a carousel with a central editable iframe and smaller iframes on either side that move to the centre when clicked.
 
-A live demo is avaiable at [acyleris.com](https://acyleris.com) in the portfolio section.
+A live demo is available at [acyleris.com](https://acyleris.com) in the portfolio section.
 
 This builds on the slider provided by [react-slick](https://www.npmjs.com/package/react-slick), adding custom animations and ease of use.
 
