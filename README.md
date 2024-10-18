@@ -2,9 +2,9 @@
 
 Displays a carousel with a central editable iframe and smaller iframes on either side that move to the centre when clicked.
 
-A live demo is avaiable at [https://acyleris.com](acyleris.com) in the portfolio section.
+A live demo is avaiable at [acyleris.com](https://acyleris.com) in the portfolio section.
 
-This builds on the slider provided by [https://www.npmjs.com/package/react-slick](react-slick), adding custom animations and ease of use.
+This builds on the slider provided by [react-slick](https://www.npmjs.com/package/react-slick), adding custom animations and ease of use.
 
 ### Usage
 Download or clone the repository and add the WebsiteCarousel folder to your project. Import the Carousel file from the WebsiteCarousel folder
