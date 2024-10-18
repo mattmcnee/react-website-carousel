@@ -7,7 +7,7 @@ A live demo is avaiable at [https://acyleris.com](acyleris.com) in the portfolio
 This builds on the slider provided by [https://www.npmjs.com/package/react-slick](react-slick), adding custom animations and ease of use.
 
 ### Usage
-Import the Carousel file from the WebsiteCarousel folder
+Download or clone the repository and add the WebsiteCarousel folder to your project. Import the Carousel file from the WebsiteCarousel folder
 ```
 import Carousel from '.../WebsiteCarousel/Carousel';
 ```
