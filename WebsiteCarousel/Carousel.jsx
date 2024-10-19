@@ -12,19 +12,17 @@ const defaultSources = [
     { url: "https://example.com/3", name: "Example Website 3" }
 ];
 
-// Use as <Carousel sources={sources}/>
-// Define sources in the same way as defaultSources above
-
 const Carousel = ({sources = defaultSources}) => {
     const carouselRef = useRef(null);
     const [cssHeight, setCssHeight] = useState(200);
 
     const sliderRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(1);
+    const [touchStart, setTouchStart] = useState(null);
 
     // Handle slide change
     const handleBeforeChange = (oldIndex, newIndex) => {
-        const nextIndex = (newIndex + 1) % sources.length; // Calculate next index
+        const nextIndex = (newIndex + 1) % sources.length;
         setActiveIndex(nextIndex);
     };
 
@@ -47,7 +45,26 @@ const Carousel = ({sources = defaultSources}) => {
             handlePrevSlide();
         }
     };
-    
+
+    const onTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => {
+        if (!touchStart) return;
+        const currentTouch = e.targetTouches[0].clientX;
+        const distance = touchStart - currentTouch;
+
+        if (Math.abs(distance) > 50) {
+            if (distance > 0) {
+                handleNextSlide();
+            } else {
+                handlePrevSlide();
+            }
+            setTouchStart(null);
+        }
+    };
+
     var settings = {
         dots: true,
         infinite: true,
@@ -56,6 +73,7 @@ const Carousel = ({sources = defaultSources}) => {
         slidesToScroll: 1,
         beforeChange: handleBeforeChange,
         arrows: false,
+        swipe: false,
     };
 
     return (
@@ -75,6 +93,8 @@ const Carousel = ({sources = defaultSources}) => {
                                     <div
                                         className='overlay'
                                         onClick={() => handleOverlayClick(index)}
+                                        onTouchStart={onTouchStart}
+                                        onTouchMove={onTouchMove}
                                     ></div>
                                 )}
                                 {index === activeIndex && (

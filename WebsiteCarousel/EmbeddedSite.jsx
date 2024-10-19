@@ -54,6 +54,7 @@ const EmbeddedSite = ({ src, zoom = 0.8, setCssHeight, title }) => {
                     borderRadius: "10px",
                     boxShadow: "0 0 15px rgba(0, 0, 0, 0.05)",
                 }}
+                loading="lazy"
                 allowFullScreen
             ></iframe>
         </div>

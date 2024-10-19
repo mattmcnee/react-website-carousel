@@ -18,7 +18,12 @@ const LinkOverlay = ({ linkText, src }) => {
 
     // open external links in new tab
     const handleClick = () => {
-        window.open(src, '_blank');
+        if (isHovered) {
+            window.open(src, '_blank');
+        } else {
+            setIsHovered(true);
+        }
+        
     };
 
     return (

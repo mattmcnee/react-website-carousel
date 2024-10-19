@@ -20,7 +20,7 @@
     transform: scale(0.8) translateY(calc(var(--dynamic-height, 200) / 3));
 }
   
-.slick-slide.slick-active .carousel-item.active {
+.slick-slide .carousel-item.active {
     z-index: 5;
     transform: scale(2)  translateY(4px);
 }
