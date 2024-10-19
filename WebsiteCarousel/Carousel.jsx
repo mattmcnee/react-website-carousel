@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useMemo } from 'react';
+import React, { useRef, useState } from 'react';
 import EmbeddedSite from './EmbeddedSite';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -34,7 +34,8 @@ const Carousel = ({sources = defaultSources}) => {
         sliderRef.current.slickPrev();
     };
 
-    const handleOverlayClick = (index) => {
+    const handleOverlayClick = (e, index) => {
+        e.stopPropagation();
         const totalItems = sources.length;
         const nextIndex = (activeIndex + 1) % totalItems;
         const prevIndex = (activeIndex - 1 + totalItems) % totalItems;
@@ -47,10 +48,12 @@ const Carousel = ({sources = defaultSources}) => {
     };
 
     const onTouchStart = (e) => {
+        e.stopPropagation();
         setTouchStart(e.targetTouches[0].clientX);
     };
 
     const onTouchMove = (e) => {
+        e.stopPropagation();
         if (!touchStart) return;
         const currentTouch = e.targetTouches[0].clientX;
         const distance = touchStart - currentTouch;
@@ -92,7 +95,7 @@ const Carousel = ({sources = defaultSources}) => {
                                 {index !== activeIndex && (
                                     <div
                                         className='overlay'
-                                        onClick={() => handleOverlayClick(index)}
+                                        onClick={(e) => handleOverlayClick(e, index)}
                                         onTouchStart={onTouchStart}
                                         onTouchMove={onTouchMove}
                                     ></div>
